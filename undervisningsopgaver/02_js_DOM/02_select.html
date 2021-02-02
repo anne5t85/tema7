@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML struktur recap</title>
     <style>
-        {
+        ^ {
             margin: 0;
             padding: 0;
         }
@@ -23,7 +23,7 @@
 
 <body>
     <header>
-        <h1>TITEL</h1>
+        titel
     </header>
     <main>
         <h2>undertitel</h2>
@@ -43,8 +43,20 @@
     <footer> This is the footer</footer>
 
 
+    <script>
+        const titel = document.querySelector("header");
+        console.log(titel);
 
-    <script src=""></script>
+        const undertitel = document.querySelector("main")
+        console.log(undertitel);
+
+        const section = document.querySelector("section");
+        console.log(section);
+
+        const indhold = document.querySelector("article");
+        console.log(indhold);
+
+    </script>
 </body>
 
 </html>
