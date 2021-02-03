@@ -97,29 +97,41 @@
         pic2.alt = "Billede af mennesker";
         pic2.src = "billede_2.jpg"
 
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded");
+            titel.textContent = "Billedgalleri";
+            firstH.textContent = "Billede 1";
+            secondH.innerHTML = "<h3>Billede 2</h3>";
+            pic1.alt = "Billede af natur";
+            pic1.src = "billede_1.jpg"
+            pic2.alt = "Billede af mennesker";
+            pic2.src = "billede_2.jpg"
 
 
-        let mainSection = document.querySelector("section");
-        //nyt article element
-        let newArticle = document.createElement("article");
-        // nyt H# element
-        let overskrift = document.createElement("h3");
-        //tekst til overskriften
-        let overskriftText = document.createTextNode("Billede 3");
-        //indsæt tekst i overskrift
-        overskrift.appendChild(overskriftText);
-        //Tilføj overskrift til article
-        newArticle.appendChild(overskrift);
-        //tilføj article til section
-        mainSection.appendChild(newArticle);
+            let mainSection = document.querySelector("section");
+            //nyt article element
+            let newArticle = document.createElement("article");
+            // nyt H# element
+            let overskrift = document.createElement("h3");
+            //tekst til overskriften
+            let overskriftText = document.createTextNode("Billede 3");
+            //indsæt tekst i overskrift
+            overskrift.appendChild(overskriftText);
+            //Tilføj overskrift til article
+            newArticle.appendChild(overskrift);
+            //tilføj article til section
+            mainSection.appendChild(newArticle);
 
-        let newContext = document.createElement("p");
-        newContext.textContent = "Her skal stå noget nyt og spændende";
+            let newContext = document.createElement("p");
+            newContext.textContent = "Her skal stå noget nyt og spændende";
 
-        let newPic = document.createElement("img");
-        newPic.src = "https://placeimg.com/400/300/people";
-        newArticle.appendChild(newPic);
-        newArticle.appendChild(newContext);
+            let newPic = document.createElement("img");
+            newPic.src = "https://placeimg.com/400/300/people";
+            newArticle.appendChild(newPic);
+            newArticle.appendChild(newContext);
+        }
 
     </script>
 </body>
