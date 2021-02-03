@@ -46,6 +46,8 @@
 </head>
 
 <body>
+    <ul id="display"></ul>
+
     <header>
         titel
     </header>
@@ -137,6 +139,24 @@
         function doSomething() {
             console.log("Billede skift");
             pic1.src = "https://placeimg.com/640/480/nature";
+        }
+
+        pic2.addEventListener("click", doSomething);
+
+        function doSomething() {
+            console.log("Billede skift2");
+            pic2.src = "https://placeimg.com/640/480/people";
+        }
+
+        pic2.addEventListener("click", skift);
+
+        const kategorier = ["animals", "arch", "people", "nature", "tech"];
+        kategorier.forEach(nummer => display.innerHTML += "<li>" + nummer + "</li>");
+
+        function skift() {
+            const nummer = Math.round(Math.random() * 4);
+            pic2.src = "https://placeimg.com/600/400/" + kategorier[nummer];
+            pic2.alt = kategorier[nummer];
         }
 
     </script>
