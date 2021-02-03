@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML struktur recap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+        }
+
+        main {
+            padding: 20px;
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        article {
+            border: 1px solid #333;
+        }
+
+        header,
+        footer {
+            text-align: center;
+        }
+
+        header,
+        footer {
+            padding: 10px 0;
+            border: 1px solid #888;
+        }
+
+        .boxshadow {
+            box-shadow: -2px 4px 29px -1px rgba(0, 0, 0, 0.75);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        titel
+    </header>
+    <main>
+        <h2>UNDERTITEL</h2>
+        <section>
+            <article class="boxshadow">
+                <img src="https://placeimg.com/640/480/nature" alt="" class="first">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio delectus similique fugiat voluptate dolorum, veritatis nostrum doloremque impedit adipisci at.</p>
+            </article>
+            <article class="boxshadow">
+                <img src="https://placeimg.com/640/480/people" alt="" class="second">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio delectus similique fugiat voluptate dolorum, veritatis nostrum doloremque impedit adipisci at.</p>
+            </article>
+        </section>
+    </main>
+    <footer> This is the footer</footer>
+
+
+    <script>
+        const titel = document.querySelector("header");
+        console.log(titel);
+        titel.textContent = "Billedgalleri";
+        titel.innerHTML = "<h1>Billeder</h1>";
+
+        const undertitel = document.querySelector("main")
+        console.log(undertitel);
+
+        const section = document.querySelector("section");
+        console.log(section);
+
+        const firstH = document.querySelector("article:first-child h3");
+        console.log(firstH);
+        firstH.textContent = "Billede 1";
+
+
+        const secondH = document.querySelector("article:nth-child(2) h3");
+        console.log(secondH);
+        secondH.innerHTML = "<h3>Billede 2</h3>";
+
+        const pic1 = document.querySelector("article:first-child img");
+        console.log(pic1);
+        pic1.alt = "Billede af natur";
+        pic1.src = "billede_1.jpg"
+
+        const pic2 = document.querySelector("article:nth-child(2) img");
+        console.log(pic2);
+        pic2.alt = "Billede af mennesker";
+        pic2.src = "billede_2.jpg"
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded");
+            titel.textContent = "Billedgalleri";
+            firstH.textContent = "Billede 1";
+            secondH.innerHTML = "<h3>Billede 2</h3>";
+            pic1.alt = "Billede af natur";
+            pic1.src = "billede_1.jpg"
+            pic2.alt = "Billede af mennesker";
+            pic2.src = "billede_2.jpg"
+
+
+            let mainSection = document.querySelector("section");
+            //nyt article element
+            let newArticle = document.createElement("article");
+            // nyt H# element
+            let overskrift = document.createElement("h3");
+            //tekst til overskriften
+            let overskriftText = document.createTextNode("Billede 3");
+            //indsæt tekst i overskrift
+            overskrift.appendChild(overskriftText);
+            //Tilføj overskrift til article
+            newArticle.appendChild(overskrift);
+            //tilføj article til section
+            mainSection.appendChild(newArticle);
+
+            let newContext = document.createElement("p");
+            newContext.textContent = "Her skal stå noget nyt og spændende";
+
+            let newPic = document.createElement("img");
+            newPic.src = "https://placeimg.com/400/300/people";
+            newArticle.appendChild(newPic);
+            newArticle.appendChild(newContext);
+
+            //class til articles
+            firstH.classList.add("boxshadow");
+            console.log("box1");
+            secondH.classList.add("boxshadow");
+            console.log("box2");
+            newArticle.classList.add("boxshadow");
+            console.log("box3");
+            //mouseover eventlisteners
+            firstH.addEventListener("mouseover", shadow);
+            secondH.addEventListener("mouseover", shadow);
+            newArticle.addEventListener("mouseover", shadow);
+            //mouseout eventlisteners
+            firstH.addEventListener("mouseout", shadowOut);
+            secondH.addEventListener("mouseout", shadowOut);
+            newArticle.addEventListener("mouseout", shadowOut);
+
+            function shadow() {
+                console.log("shadowOver");
+                this.classList.remove("boxshadow");
+            }
+
+            function shadowOut() {
+                console.log("shadowOut");
+                this.classList.add("boxshadow");
+            }
+        }
+
+        pic1.addEventListener("click", doSomething);
+
+        function doSomething() {
+            console.log("Billede skift");
+            pic1.src = "https://placeimg.com/640/480/nature";
+        }
+
+    </script>
+</body>
+
+</html>
