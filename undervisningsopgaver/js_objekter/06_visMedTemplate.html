@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyreobjekt</title>
+</head>
+<style>
+    article {
+        border: 1px solid #333;
+        padding: 20px;
+    }
+
+    img {
+        max-width: 30%;
+    }
+
+</style>
+
+<body>
+    <section></section>
+    <template>
+        <article>
+            <h2></h2>
+            <img src="" alt="">
+            <p class="art"></p>
+            <p class="sted"></p>
+        </article>
+    </template>
+
+    <script>
+        let dyr = [{
+            "navn": "gris",
+            "type": "pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+            "levested": "svinefarme"
+        }, {
+            "navn": "frø",
+            "type": "pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+            "levested": "sump"
+        }, {
+            "navn": "ræv",
+            "type": "pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+            "levested": "skov"
+        }, {
+            "navn": "sild",
+            "type": "pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+            "levested": "havet"
+        }, {
+            "navn": "krokodille",
+            "type": "pattedyr",
+            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+            "levested": "flod"
+
+        }];
+
+
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+        //løb igennem array "dyr"
+        dyr.forEach(etDyr => {
+            let klon = temp.cloneNode(true).content;
+            klon.querySelector("h2").textContent = etDyr.navn;
+            klon.querySelector(".art").textContent = `type:${etDyr.type}`;
+            klon.querySelector(".sted").textContent = `levested: ${etDyr.levested}`;
+            klon.querySelector("img").src = etDyr.billede;
+            container.appendChild(klon);
+        })
+
+    </script>
+</body>
+
+</html>
